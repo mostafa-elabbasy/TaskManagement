@@ -1,0 +1,88 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Mostafa" id="task-history-table">
+        <createTable tableName="task_history">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tasks_history_pkey"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(1000)">
+            </column>
+            <column name="status" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="priority" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="due_date" type="Date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Mostafa" id="tasks-history-relations">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="task_history" constraintName="fkj345gk1bovqv5ard98rcx7yyx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="task_history" constraintName="fkj345gk1bovqv8ard98rcx7yyx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="tasks" validate="true"/>
+    </changeSet>
+    <changeSet author="mostafa" id="insert-tasks-history">
+        <insert tableName="task_history">
+            <column name="id" value="fb7a4c4d-9257-4fff-9543-262bc1883d43"/>
+            <column name="title" value="tasks 1"/>
+            <column name="description" value="bank misr task"/>
+            <column name="status" value="TODO"/>
+            <column name="priority" value="MEDIUM"/>
+            <column name="due_date" value="2024-12-30"/>
+            <column name="user_id" value="8b45be1e-fdb5-47c8-ba95-2c3cb4971e6f"/>
+            <column name="created_by" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="task_id" value="b7f95091-86b4-44bb-b257-b9807a10c043"/>
+            <column name="created_at" value="2024-12-25 20:00:00"/>
+        </insert>
+        <insert tableName="task_history">
+            <column name="id" value="9ea50290-782b-41d3-b5b3-bc2b0699454d"/>
+            <column name="title" value="tasks 2"/>
+            <column name="description" value="bank misr task"/>
+            <column name="status" value="INPROGRESS"/>
+            <column name="priority" value="LOW"/>
+            <column name="due_date" value="2024-12-29"/>
+            <column name="user_id" value="8b45be1e-fdb5-47c8-ba95-2c3cb4971e6f"/>
+            <column name="created_by" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="task_id" value="7d40d9c4-f975-4b0e-af6a-f1a16a4573c7"/>
+            <column name="created_at" value="2024-12-25 20:00:00"/>
+        </insert>
+        <insert tableName="task_history">
+            <column name="id" value="af74706e-7460-472a-9caa-c24b74fcbb58"/>
+            <column name="title" value="tasks 3"/>
+            <column name="description" value="bank misr task"/>
+            <column name="status" value="TODO"/>
+            <column name="priority" value="MEDIUM"/>
+            <column name="due_date" value="2024-01-02"/>
+            <column name="user_id" value="8b45be1e-fdb5-47c8-ba95-2c3cb4971e6f"/>
+            <column name="created_by" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="task_id" value="4e83ddfd-003e-4831-af73-f5dc9ab192e4"/>
+            <column name="created_at" value="2024-12-25 20:00:00"/>
+        </insert>
+        <insert tableName="task_history">
+            <column name="id" value="16c316d7-ea10-4930-b6aa-92234c3856d2"/>
+            <column name="title" value="tasks 4"/>
+            <column name="description" value="bank misr task"/>
+            <column name="status" value="DONE"/>
+            <column name="priority" value="HIGH"/>
+            <column name="due_date" value="2024-12-31"/>
+            <column name="user_id" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="created_by" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="task_id" value="34229dff-024e-4a7b-893a-b65a20de6f17"/>
+            <column name="created_at" value="2024-12-25 20:00:00"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

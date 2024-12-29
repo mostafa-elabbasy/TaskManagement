@@ -1,0 +1,41 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="mostafa" id="insert-users-roles">
+        <insert tableName="roles">
+            <column name="id" value="d44ca73f-d6c2-48f8-a2da-90fa00e89b5b"/>
+            <column name="authority" value="ADMIN_ROLE"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" value="2fac9f38-124a-4d09-880f-f002f36178f2"/>
+            <column name="authority" value="USER_ROLE"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="full_name" value="Admin"/>
+            <column name="email" value="admin@test"/>
+            <column name="password" value="$2a$10$1XhvcSfwZSon1cakpNQtzuNjdEeWVnFIIpX3.860VtgkZXTR/9Ywy"/>
+            <column name="created_at" value="2024-12-25 20:00:00"/>
+            <column name="updated_at" value="2024-12-25 20:00:00"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" value="8b45be1e-fdb5-47c8-ba95-2c3cb4971e6f"/>
+            <column name="full_name" value="User"/>
+            <column name="email" value="user@test"/>
+            <column name="password" value="$2a$10$1XhvcSfwZSon1cakpNQtzuNjdEeWVnFIIpX3.860VtgkZXTR/9Ywy"/>
+            <column name="created_at" value="2024-12-25 20:00:00"/>
+            <column name="updated_at" value="2024-12-25 20:00:00"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="role_id" value="d44ca73f-d6c2-48f8-a2da-90fa00e89b5b"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="8b45be1e-fdb4-47c8-ba95-2c3cb4971e6f"/>
+            <column name="role_id" value="2fac9f38-124a-4d09-880f-f002f36178f2"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" value="8b45be1e-fdb5-47c8-ba95-2c3cb4971e6f"/>
+            <column name="role_id" value="2fac9f38-124a-4d09-880f-f002f36178f2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

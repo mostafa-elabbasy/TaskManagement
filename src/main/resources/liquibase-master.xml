@@ -1,0 +1,51 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="USER (generated)" id="1735154808530-1">
+        <createTable tableName="roles">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_pkey"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="USER (generated)" id="1735154808530-2">
+        <createTable tableName="user_role">
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_pkey"/>
+            </column>
+            <column name="role_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="USER (generated)" id="1735154808530-3">
+        <createTable tableName="users">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="USER (generated)" id="1735154808530-4">
+        <addUniqueConstraint columnNames="email" constraintName="uk6dotkott2kjsp8vw4d0m25fb7" tableName="users"/>
+    </changeSet>
+    <changeSet author="USER (generated)" id="1735154808530-5">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role" constraintName="fkj345gk1bovqvfame88rcx7yyx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="USER (generated)" id="1735154808530-6">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_role" constraintName="fkt7e7djp752sqn6w22i6ocqy6q" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
+    </changeSet>
+    <include file="liquibase/users-data.xml" relativeToChangelogFile="true" />
+    <include file="liquibase/task.xml" relativeToChangelogFile="true" />
+    <include file="liquibase/task-history.xml" relativeToChangelogFile="true" />
+</databaseChangeLog>
